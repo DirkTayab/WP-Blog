@@ -17,13 +17,13 @@
         <div class="wrapper flex justify--between align--center">
           <div class="header__menu flex align--end">
             <div class="branding mr--2">
-              <a href="#">BLOG</a>
+              <a href="<?php echo site_url('/')?>">BLOG</a>
             </div>
             <nav class="header__nav">
-              <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
+              <?php wp_nav_menu(array(
+            'theme_location' => 'header_menu',
+            'menu_class' => 'header__nav',
+           ))?>
             </nav>
           </div>
 

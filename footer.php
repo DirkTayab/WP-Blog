@@ -2,11 +2,10 @@
       <div class="footer__wrapper text--center">
         <a href="#" class="footer__logo">BLOG</a>
         <nav class="footer__nav">
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">BLog</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
+          <?php wp_nav_menu(array(
+            'theme_location' => 'footer_menu',
+            'menu_class' => 'footer__nav',
+           ))?>
         </nav>
 
         <ul class="footer__socialmedia flex justify--between">
