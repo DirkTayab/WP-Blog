@@ -112,10 +112,11 @@
               <li class="article__date"><?php echo get_the_date('M j, Y'); ?></li>
               <li class="article__category"><?php echo get_the_category()[0]->name ?></li>
             </ul>
-            <h3><?php the_title() ?></h3>
+            <a href="<?php the_permalink() ?>"><h3><?php the_title() ?></h3></a>
             <p>
               <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
             </p>
+            <a href="">Read more</a>
           </div>
           <?php endwhile;
                         else:

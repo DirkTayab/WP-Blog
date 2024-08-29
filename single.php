@@ -1,5 +1,6 @@
 <?php get_header() ?>
 
+
 <!-- Banner -->
 <section class="single__banner bg--dark clr--light py--10">
 
