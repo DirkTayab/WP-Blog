@@ -5,7 +5,7 @@
 <section class="single__banner bg--dark clr--light py--10">
 
       <?php 
-                    $Banner = new WP_Query(array (
+                    new WP_Query(array (
                     'post_type' => 'post',
                     'post_per_page' => 1,
                     'meta_key' => "Banner",
@@ -13,7 +13,7 @@
                 ))
                 ?>
 
-                <?php if($Banner->have_posts()) : while($Banner->have_posts()) : $Banner->the_post() ?>
+                <?php if(have_posts()) : while(have_posts()) : the_post() ?>
 
       <div class="container">
         <div class="single__banner__header flex justify--between align--end">
@@ -49,7 +49,7 @@
       <div class="container">
 
         <?php 
-                        $single = new WP_Query(array (
+                        new WP_Query(array (
                         'post_type' => 'post',
                         'post_per_page' => 1,
                         'meta_key' => "Single",
@@ -57,7 +57,7 @@
                     ))
                     ?>
 
-                    <?php if($single->have_posts()) : while($single->have_posts()) : $single->the_post() ?>
+                    <?php if(have_posts()) : while(have_posts()) : the_post() ?>
         <div class="single__article__wrapper">
           <div class="single__article__info bg--light clr--dark">
             <div class="single__article__meta">
@@ -71,7 +71,7 @@
                 <?php $tags = get_the_tags(); 
                         if($tags) {
                             foreach($tags as $tag){ ?>
-                                <?php echo $tag->name;?>,
+                                <?php echo $tag->name;?>, 
                            <?php }
                         }
                     ?>
@@ -101,8 +101,9 @@
 
             <div class="single__navigation mt--10">
               <ul class="flex justify--between">
-                <li><a href="#">Previous Story</a></li>
-                <li><a href="#">Next Story</a></li>
+                <li><?php echo get_previous_post_link( '%link', 'Previous' )?></li>
+                <li><?php echo get_next_post_link( '%link', 'Next' )?></li>
+
               </ul>
             </div>
           </div>
@@ -128,8 +129,8 @@
                             $story = new WP_Query(array (
                             'post_type' => 'post',
                             'posts_per_page' => 3,
-                            'meta_key' => "Story",
-                            'meta_value' => "sub",
+                            'orderby' => 'rand',
+                            'post_not_in' => array(get_the_ID())
                         ))
                         ?>
 
@@ -155,15 +156,15 @@
           <div class="single__other__main">
 
            <?php 
-                    $card = new WP_Query(array (
+                    $other = new WP_Query(array (
                     'post_type' => 'post',
-                    'post_per_page' => 1,
-                    'meta_key' => "Card",
-                    'meta_value' => "main",
+                    'posts_per_page' => 1,
+                    'orderby' => 'rand',
+                    'post__not_in' => array(get_the_ID())
                 ))
                 ?>
 
-                <?php if($card->have_posts()) : while($card->have_posts()) : $card->the_post() ?>
+                <?php if($other->have_posts()) : while($other->have_posts()) : $other->the_post() ?>
                 
             <div class="card__other">
               <?php if(has_post_thumbnail()){
