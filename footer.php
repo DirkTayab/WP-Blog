@@ -1,6 +1,6 @@
 <footer class="footer bg--dark clr--light py--5">
       <div class="footer__wrapper text--center">
-        <a href="#" class="footer__logo">BLOG</a>
+        <a href="<?php echo site_url('/')?>" class="footer__logo">BLOG</a>
         <nav class="footer__nav">
           <?php wp_nav_menu(array(
             'theme_location' => 'footer_menu',
